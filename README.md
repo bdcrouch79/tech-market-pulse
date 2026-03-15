@@ -1,16 +1,14 @@
 # Tech Market Pulse
 
-Small analytics project exploring performance trends across major technology companies and tech-focused ETFs.
+Small analytics pipeline exploring performance trends across major technology companies and tech-focused ETFs.
 
-Data is pulled automatically using the Yahoo Finance API.
+The project automatically downloads market data and generates insights around:
 
-The script analyzes:
+â€¢ price trends  
+â€¢ volatility comparison  
+â€¢ cross-asset correlation  
 
-• price trends  
-• volatility comparison  
-• cross-asset correlations  
-
-Assets included:
+Assets analyzed include:
 
 AAPL  
 MSFT  
@@ -25,14 +23,22 @@ VGT
 SMH  
 ARKK  
 
-Charts are generated automatically.
+---
 
-Example output:
+## Example Output
 
-charts/price_trends.png  
-charts/volatility.png  
-charts/correlation_heatmap.png  
+### Price Trends
 
-Run:
+![Price Trends](charts/price_trends.png)
 
-python main.py
+### Volatility Comparison
+
+![Volatility](charts/volatility.png)
+
+### Correlation Matrix
+
+![Correlation](charts/correlation_heatmap.png)
+
+---
+
+## Run

@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/cd-mark.png" width="90">
+</p>
 # Tech Market Pulse
 
 Small analytics pipeline exploring performance trends across major technology companies and tech-focused ETFs.
@@ -60,4 +63,5 @@ These projects are intentionally lightweight and are used to explore:
 • execution systems
 
 https://crouchdevelopment.com
+
 

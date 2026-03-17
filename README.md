@@ -1,17 +1,45 @@
 <p align="center">
   <img src="assets/cd-mark.png" width="90">
 </p>
+
 # Tech Market Pulse
 
-Small analytics pipeline exploring performance trends across major technology companies and tech-focused ETFs.
+**A lightweight analytics engine for understanding behavior across major technology equities and ETFs.**
 
-The project automatically downloads market data and generates insights around:
+---
 
-• price trends  
-• volatility comparison  
-• cross-asset correlation  
+## What This Is
 
-Assets analyzed include:
+This project analyzes market data to surface patterns across:
+
+- price movement  
+- volatility  
+- cross-asset relationships  
+
+It is designed to answer a simple question:
+
+> What is actually happening beneath the surface of the market?
+
+---
+
+## Why It Matters
+
+Markets are noisy.
+
+Raw price charts don’t tell the full story.
+
+Understanding:
+- how assets move together  
+- how volatility shifts  
+- where correlations break  
+
+…creates better decision-making.
+
+---
+
+## Assets Covered
+
+**Equities**
 
 AAPL  
 MSFT  
@@ -21,6 +49,8 @@ GOOGL
 META  
 TSLA  
 
+**ETFs**
+
 QQQ  
 VGT  
 SMH  
@@ -28,15 +58,19 @@ ARKK
 
 ---
 
-## Example Output
+## Output
 
 ### Price Trends
 
 ![Price Trends](charts/price_trends.png)
 
+---
+
 ### Volatility Comparison
 
 ![Volatility](charts/volatility.png)
+
+---
 
 ### Correlation Matrix
 
@@ -44,24 +78,24 @@ ARKK
 
 ---
 
-## Run
+## How It Works
+
+The pipeline:
+
+1. pulls historical market data  
+2. computes key statistical measures  
+3. generates visual outputs for comparison  
+
+This is intentionally simple, but structured to expand into:
+
+- signal detection  
+- regime analysis  
+- portfolio-level insights  
 
 ---
 
-Crouch Development  
-Systems. Strategy. Execution.
+## Run Locally
 
-This repository is part of an ongoing set of technical experiments and
-architecture explorations conducted under the Crouch Development umbrella.
-
-These projects are intentionally lightweight and are used to explore:
-
-• systems thinking  
-• automation architecture  
-• operational analytics  
-• applied AI workflows  
-• execution systems
-
-https://crouchdevelopment.com
-
-
+```bash
+pip install -r requirements.txt
+python main.py

@@ -155,11 +155,11 @@ function correlation(a: MarketPoint[], b: MarketPoint[]) {
 export async function getMarketPayload(): Promise<MarketPayload> {
   const results = await Promise.allSettled(MARKET_UNIVERSE.map(async (asset) => ({ asset, series: await fetchSeries(asset.symbol) })));
   const liveCount = results.filter((result) => result.status === "fulfilled" && result.value.series.length > 20).length;
-  const useLive = liveCount >= Math.ceil(MARKET_UNIVERSE.length * 0.7);
+  const useLive = liveCount === MARKET_UNIVERSE.length;
   const raw = MARKET_UNIVERSE.map((asset, index) => {
     const result = results[index];
     const liveSeries = result?.status === "fulfilled" ? result.value.series : [];
-    return { asset, series: useLive && liveSeries.length > 20 ? liveSeries : seededDemoSeries(asset.symbol), live: useLive && liveSeries.length > 20 };
+    return { asset, series: useLive ? liveSeries : seededDemoSeries(asset.symbol), live: useLive };
   });
   const qqq = raw.find((item) => item.asset.symbol === "QQQ")?.series ?? [];
   const qqq1m = returnOver(qqq, 21);

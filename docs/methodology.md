@@ -1,43 +1,70 @@
 # Methodology
 
-This project uses a straightforward market analytics workflow built on daily closing price data.
+Tech Market Pulse uses daily closing prices for a fixed technology-market universe and intentionally favors descriptive, explainable statistics.
 
-## How Data Is Pulled
+## Data
 
-Data is downloaded with `yfinance` for a fixed list of technology equities and sector-related ETFs.
+The web application requests approximately one year of daily chart data for each tracked symbol from Yahoo Finance's chart endpoint. Requests are made server-side and use a 15-minute Next.js revalidation hint.
 
-The current start date is `2023-01-01`. The script pulls the close-price series for each ticker and aligns them by trading date in a single table.
+If the upstream provider is materially unavailable, the application switches the full dashboard into explicitly labeled deterministic demo mode. Demo-mode values are illustrative and must never be treated as current market data.
 
-## How Volatility Is Calculated
+## Returns
 
-Volatility is calculated from daily percentage returns.
+Periodic return is calculated as:
 
-For each asset, the script computes:
+`return = (latest close / prior close) - 1`
 
-`daily return = (today close / prior close) - 1`
+Approximate trading-session windows:
 
-It then takes the standard deviation of those daily returns. In this project, higher standard deviation means higher realized day-to-day variability over the sampled period.
+- 1W: 5 sessions
+- 1M: 21 sessions
+- 3M: 63 sessions
+- 6M: 126 sessions
+- 1Y: 252 sessions
+- YTD: first available session of the current calendar year to latest session
 
-This is a simple comparative measure, not an options-style or annualized volatility model.
+## Annualized realized volatility
 
-## How Correlation Is Computed
+Daily log returns are calculated as:
 
-Correlation is also based on daily percentage returns.
+`r_t = ln(close_t / close_(t-1))`
 
-Once returns are calculated for every asset, the script uses the standard Pearson correlation coefficient to measure how closely each pair moves together over time.
+The sample standard deviation of daily log returns is annualized with:
 
-Values near:
+`annualized volatility = stdev(daily log returns) × sqrt(252)`
 
-- `1` indicate strong positive co-movement
-- `0` indicate weak linear relationship
-- `-1` indicate strong inverse movement
+This is realized historical volatility. It is not implied volatility and it is not a forecast.
 
-## Assumptions
+## Maximum drawdown
 
-- Closing prices are sufficient for a high-level comparative view.
-- Daily returns are an acceptable base frequency for trend, volatility, and correlation analysis.
-- The asset list is intentionally fixed rather than dynamically selected.
-- Missing values from the first return calculation are dropped.
-- The output is descriptive, not predictive.
+For each session, the current close is compared with the highest close observed up to that point. Maximum drawdown is the most negative peak-to-trough percentage decline in the sampled series.
 
-This methodology is designed for clarity and fast interpretation rather than academic completeness.
+## Relative strength versus QQQ
+
+For the first dashboard slice, relative strength is the difference between each asset's one-month return and QQQ's one-month return.
+
+Positive values indicate one-month outperformance versus QQQ. Negative values indicate underperformance.
+
+## Correlation
+
+Pairwise Pearson correlation is computed from aligned daily log returns.
+
+- values near 1: strong positive co-movement
+- values near 0: weak linear co-movement
+- negative values: inverse co-movement
+
+## Market Pulse score
+
+The Market Pulse score is a bounded 0–100 descriptive composite of:
+
+- average one-month return
+- percentage of tracked assets with positive one-month returns
+- average annualized realized volatility
+
+The score is deliberately simple and interpretable. It is not a trading signal or predictive model.
+
+## Scope
+
+The tracked universe is intentionally fixed: AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA, QQQ, VGT, SMH, and ARKK.
+
+The system is designed for fast technology-market orientation and technical showcase value, not academic completeness or personalized investment decision-making.

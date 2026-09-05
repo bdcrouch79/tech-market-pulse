@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: night --default;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in oklab, var(--color-primary) 14%, transparent) 0, transparent 26rem),
+    radial-gradient(circle at 88% 16%, color-mix(in oklab, var(--color-secondary) 8%, transparent) 0, transparent 30rem),
+    var(--color-base-100);
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+.table :where(th, td) {
+  white-space: nowrap;
+}

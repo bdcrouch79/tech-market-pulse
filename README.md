@@ -1,82 +1,59 @@
-<p align="center">
-  <img src="assets/cd-mark.png" width="90">
-</p>
-
 # Tech Market Pulse
 
-**A lightweight market analytics engine for understanding behavior across major technology equities and ETFs.**
+**A live technology-market intelligence dashboard for seeing leadership, momentum, volatility, drawdown, relative strength, and correlation across major technology equities and ETFs.**
 
-Tech Market Pulse pulls market data, standardizes daily return series, and produces a compact output set focused on trend, volatility, and cross-asset correlation.
+Tech Market Pulse began as a small Python market-analysis experiment. It now serves as a public Crouch Development showcase that turns the same daily price stream into a clear, explainable market-structure dashboard.
 
-## What This Is
+## What It Shows
 
-This repository is a focused analytics system designed to turn public market data into a clear comparative view of the technology sector.
+- Market Pulse composite score
+- 1W / 1M / 3M / 6M / 1Y / YTD performance
+- leadership and laggard ranking
+- positive market breadth
+- annualized realized volatility
+- maximum drawdown
+- one-month relative strength versus QQQ
+- normalized 90-session performance trends
+- pairwise return correlation across the tracked universe
 
-It is intentionally narrow in scope: one dataset, one workflow, and a direct output layer.
+## Market Universe
 
-## Why It Matters
+AAPL, MSFT, NVDA, AMZN, GOOGL, META, TSLA, QQQ, VGT, SMH, and ARKK.
 
-Markets are noisy, and raw price charts rarely tell the full story.
+## Architecture
 
-Comparing leading equities, sector ETFs, and higher-beta thematic products in one pass helps surface dispersion, concentration, and changes in risk structure without adding unnecessary complexity.
+The public application is built with Next.js, React, TypeScript, Tailwind CSS, and DaisyUI. Market data is retrieved server-side from Yahoo Finance's chart endpoint and cached for 15 minutes. If the upstream provider is unavailable, the application enters an explicitly labeled deterministic demo mode rather than presenting stale or fabricated current values.
 
-## Assets Covered
-
-The current universe includes:
-
-- AAPL
-- MSFT
-- NVDA
-- AMZN
-- GOOGL
-- META
-- TSLA
-- QQQ
-- VGT
-- SMH
-- ARKK
-
-## Output
-
-The system generates three core visuals:
-
-### Price Trends
-
-![Price Trends](charts/price_trends.png)
-
-### Volatility Comparison
-
-![Volatility](charts/volatility.png)
-
-### Correlation Matrix
-
-![Correlation](charts/correlation_heatmap.png)
-
-## How It Works
-
-1. Pull closing price market data for a fixed list of tech equities and ETFs.
-2. Convert prices into daily percentage returns.
-3. Measure return dispersion as a simple volatility proxy.
-4. Compute pairwise return correlations across the full asset set.
-5. Export charts to `charts/` and print total return leaders to the console.
-
-Method notes are available in [docs/methodology.md](/C:/dev/tech-market-pulse/docs/methodology.md).
+The original Python/yfinance experiment remains in the repository as the analytical prototype and project history.
 
 ## Run Locally
 
 ```bash
-pip install -r requirements.txt
-python main.py
+npm install
+npm run dev
 ```
 
-Generated charts are written to `charts/`.
+Verification:
 
-## Future Direction
+```bash
+npm run typecheck
+npm run build
+```
 
-Likely extensions include broader asset coverage, rolling-window analytics, benchmark-relative scoring, regime detection, and a more formal reporting layer.
+## Methodology
 
-## Philosophy
+The public methodology page documents return windows, annualized realized volatility, maximum drawdown, relative strength, correlation, and the Market Pulse composite.
 
-The goal is to build a clear analytical base layer: direct inputs, readable transformations, and outputs that are immediately useful.
+See [`docs/PRODUCT.md`](docs/PRODUCT.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), and [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for the durable project record.
 
-Minimal surface area. Strong signal. No unnecessary ornament.
+## Legacy Prototype
+
+The original March 2026 Python implementation is preserved under `prototype/` for historical context.
+
+## Disclaimer
+
+Tech Market Pulse is an educational analytics showcase. It does not provide investment advice, recommendations, predictions, or price targets.
+
+---
+
+Built by [Crouch Development](https://crouchdevelopment.com).

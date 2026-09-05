@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Tech Market Pulse — technology market intelligence";
+export const alt = "Tech Market Pulse — experimental technology market intelligence lab";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -77,20 +77,22 @@ export default function OpenGraphImage() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <div style={{ fontSize: 30, fontWeight: 900, letterSpacing: "-1px" }}>Tech Market Pulse</div>
-              <div style={{ fontSize: 17, color: "#94a3b8" }}>Crouch Development intelligence lab</div>
+              <div style={{ fontSize: 17, color: "#94a3b8" }}>Crouch Development Labs · Experimental</div>
             </div>
           </div>
           <div
             style={{
               padding: "9px 15px",
               borderRadius: 999,
-              border: "1px solid rgba(255,255,255,.14)",
-              color: "#cbd5e1",
+              border: "1px solid rgba(245,158,11,.45)",
+              background: "rgba(245,158,11,.1)",
+              color: "#fbbf24",
               fontSize: 16,
+              fontWeight: 800,
               display: "flex",
             }}
           >
-            Market structure, visualized
+            EXPERIMENTAL LAB
           </div>
         </div>
 
@@ -142,7 +144,7 @@ export default function OpenGraphImage() {
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: "#64748b", fontSize: 18 }}>
           <span>pulse.crouchdevelopment.com</span>
-          <span>Educational market analytics</span>
+          <span>Research · Education · Demonstration</span>
         </div>
       </div>
     </div>,

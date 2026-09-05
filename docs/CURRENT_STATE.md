@@ -4,7 +4,7 @@ Last verified: 2026-09-04
 
 ## Milestone
 
-Tech Market Pulse has been promoted from a lightweight Python analytics experiment into a first-class public Crouch Development showcase application and is now registered in Bryan OS as `tech-market-pulse` with lifecycle `building`.
+Tech Market Pulse has been promoted from a lightweight Python analytics experiment into a first-class public Crouch Development showcase application and is registered in Bryan OS as `tech-market-pulse`.
 
 The implementation on `main` includes:
 
@@ -22,7 +22,8 @@ The implementation on `main` includes:
 - full cross-asset table
 - correlation matrix
 - methodology route
-- generated OpenGraph image
+- generated 1200x630 OpenGraph image
+- dedicated SVG favicon
 - robots and sitemap metadata
 - explicit all-live or all-demo market-data behavior
 - health endpoint
@@ -34,31 +35,27 @@ The implementation on `main` includes:
 - Repository inspection: complete
 - Product and architecture documentation: complete for the current slice
 - GitHub Actions typecheck/build on the primary implementation: passed
-- GitHub Actions typecheck/build on the all-live/all-demo safety correction: passed on pull request before merge
+- GitHub Actions typecheck/build on the all-live/all-demo safety correction: passed
 - Bryan OS application registration: merged and control-plane validation passed on `main`
-- Vercel team inventory verification: complete; no serving `tech-market-pulse` project currently exists in the verified team
-- Browser/responsive verification: blocked until a runnable deployment exists
-- Live upstream market-data verification from the serving runtime: blocked until a runnable deployment exists
+- Bryan reports the production launch is live or actively propagating as of 2026-09-04
+- Production-serving provider/project identity still requires post-launch verification from provider state
+- Browser/responsive, OpenGraph, favicon, health, and live upstream market-data verification should be completed against the production hostname after propagation
 
 ## Infrastructure
 
 - GitHub repository: `bdcrouch79/tech-market-pulse`
 - production branch target: `main`
 - Bryan OS application id: `tech-market-pulse`
-- production-serving provider: not provisioned or verified
-- production domain: not provisioned or verified
-- planned canonical domain used in application metadata: `pulse.crouchdevelopment.com`
+- planned/expected canonical domain: `pulse.crouchdevelopment.com`
 - database: none
 
-The planned domain is not proof of routing. Provider ownership and the custom-domain attachment must be verified before production completion.
+Provider ownership and the canonical-domain attachment must be verified from the actual serving provider before the infrastructure record is considered final.
 
 ## Next action
 
-Provision or connect a serving project for this repository, attach the approved canonical domain, then verify the deployed live market-data path, health endpoint, metadata, desktop behavior, and mobile behavior. After provider verification, update Bryan OS with the real project identifier, hosting provider, and production domain.
+Let the production deployment finish propagating, then verify `pulse.crouchdevelopment.com`, `/opengraph-image`, `/icon.svg`, `/sitemap.xml`, `/robots.txt`, `/api/health`, desktop/mobile behavior, and the deployed live market-data source. Reconcile Bryan OS with the verified serving provider/project identity and production domain. Submit the production property/sitemap to Google Search Console if it is not already covered operationally by the existing Crouch Development Search Console setup.
 
 ## Blockers
 
-- No serving Vercel project for `bdcrouch79/tech-market-pulse` is present in the verified Vercel team inventory.
-- `pulse.crouchdevelopment.com` is planned only and is not yet verified as configured.
-- Deployed Yahoo Finance chart access cannot be verified until a runtime target exists.
-- Browser/responsive behavior cannot be verified until a runnable deployment exists.
+- Production-serving provider/project identity has not yet been reconciled after Bryan's launch confirmation.
+- Final production browser, metadata, and live-market-data verification awaits deployment propagation.
